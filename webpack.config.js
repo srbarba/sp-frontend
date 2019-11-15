@@ -53,6 +53,7 @@ module.exports = function (env, argv) {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       alias: {
         lib: path.resolve(__dirname, 'lib/'),
+        brandIcons: path.resolve(__dirname, 'lib/sprinter/brand-icons/'),
         app: path.resolve(__dirname, 'src/app/'),
         pages: path.resolve(__dirname, 'src/app/pages/'),
         components: path.resolve(__dirname, 'src/app/components/')
@@ -96,7 +97,7 @@ module.exports = function (env, argv) {
             {
               loader: 'sass-resources-loader',
               options: {
-                resources: [path.resolve(__dirname, 'lib/themes/default/_variables.scss')]
+                resources: [path.resolve(__dirname, 'lib/sprinter/themes/default/_variables.scss')]
               }
             },
           ]
