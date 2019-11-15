@@ -1,6 +1,12 @@
-# React - Typescript - Webpack boilerplate
+# Sprinter Assignment
 
-This a boilerplate for React app with Typescript and Webpack.
+This repository is an small project to show my frontend skills for an Sprinter assignment.
+
+## Overview
+
+The project consist in a webpage developed with React, Typescript, Webpack and Babel.
+
+When you run the project you will see a single page with a basic product view. You only can select the size and qty of the product and add it to the shopping cart. After add the product to the car, a dialog will be shown with a successful message.
 
 ### Getting Started
 
