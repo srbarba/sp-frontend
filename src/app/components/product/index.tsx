@@ -5,11 +5,13 @@ import {
   ProductStoreAvaibility,
   ProductPrice
 } from './types';
+import { getProductById } from './ProductAdapter';
 
 export {
   Product,
   ProductSizesAvaibility,
   ProductStoreAvaibility,
   ProductPrice,
-  ProductComponent
+  ProductComponent,
+  getProductById
 };

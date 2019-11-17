@@ -1,75 +1,60 @@
 import React from 'react';
-import { configure, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import { App } from 'app/App';
-import { MemoryRouter, Router, Route } from 'react-router-dom';
-import { Product, NotFound } from 'src/app/pages';
-
-configure({ adapter: new Adapter() });
+import { Router, Route} from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { render, wait } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { NotFound, Product } from 'src/app/pages';
 
 describe('App', () => {
 
-  it('home path should redirect to Product Page', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={[ '/' ]}>
-        <App/>
-      </MemoryRouter>
-    );
+  it('home path should redirect to Product Page', async () => {
+    const { container, finishLoading } = renderWithRouter(<App/>, { route: '/' });
+    await finishLoading();
 
-    const history = wrapper.find(Router).getElements().map(r => r.props.history);
-
-    expect(history).toHaveLength(2);
-    expect(history[0].action).toBe("POP");
-    expect(history[0].location.pathname).toBe("/");
-    expect(history[1].action).toBe("REPLACE");
-    expect(history[1].location.pathname).toBe("/product/0176944");
-    expect(wrapper.find(Product)).toHaveLength(1);
+    expect(container.textContent).toContain('Product: 0176944');
+    expect(container).toBeDefined();
   });
 
-  it('404 path should redirect to Product Page', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={[ '/404' ]}>
+  it('invalid path should redirect to Product Page', async () => {
+    const { container, finishLoading } = renderWithRouter(<App/>, { route: '/404' });
+    await finishLoading();
+
+    expect(container.textContent).toContain('Product: 0176944');
+    expect(container).toBeDefined();
+  });
+
+  it('invalid product id should redirect to Product Page', async () => {
+    const { container, finishLoading } = renderWithRouter(
+      <React.Fragment>
         <Route exact={true} path="/product/:id" component={Product} />
         <Route exact={true} path="/404" component={NotFound} />
-      </MemoryRouter>
-    );
+      </React.Fragment>
+    , { route: '/product/1' });
+    await finishLoading();
 
-    const history = wrapper.find(Router).getElements().map(r => r.props.history);
-
-    expect(history).toHaveLength(1);
-    expect(history[0].action).toBe("REPLACE");
-    expect(history[0].location.pathname).toBe("/product/0176944");
-    expect(wrapper.find(Product)).toHaveLength(1);
+    expect(container.textContent).toContain('Product: 0176944');
+    expect(container).toBeDefined();
   });
 
-  it('invalid product id should redirect to Product Page', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={[ '/product/1']}>
-        <Route exact={true} path="/product/:id" component={Product} />
-        <Route exact={true} path="/404" component={NotFound} />
-      </MemoryRouter>
-    );
+  it('valid product id should redirect to Product Page', async () => {
+    const { container, finishLoading } = renderWithRouter(<App/>, { route: '/product/0176944' });
+    await finishLoading();
 
-    const history = wrapper.find(Router).getElements().map(r => r.props.history);
-
-    expect(history).toHaveLength(1);
-    expect(history[0].action).toBe("REPLACE");
-    expect(history[0].location.pathname).toBe("/product/0176944");
-    expect(wrapper.find(Product)).toHaveLength(1);
+    expect(container.textContent).toContain('Product: 0176944');
+    expect(container).toBeDefined();
   });
-
-  it('valid product should load Product Page', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={[ '/product/0176944' ]}>
-        <Route exact={true} path="/product/:id" component={Product} />
-      </MemoryRouter>
-    );
-
-    const history = wrapper.find(Router).getElements().map(r => r.props.history);
-
-    expect(history).toHaveLength(1);
-    expect(history[0].action).toBe("POP");
-    expect(history[0].location.pathname).toBe("/product/0176944");
-    expect(wrapper.find(Product)).toHaveLength(1);
-  });
+  
 });
+
+function renderWithRouter(ui: React.ReactElement, {route = '/', ...renderOptions} = {}) {
+  const history = createMemoryHistory({initialEntries: [route]})
+  const utils = render(<Router history={history}>{ui}</Router>, renderOptions)
+  const finishLoading = async () =>
+  await wait(() => expect(utils.queryByText('Loading')).toBeNull())
+  return {
+    ...utils,
+    finishLoading,
+    history,
+  }
+}
