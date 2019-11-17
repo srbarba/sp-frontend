@@ -15,10 +15,11 @@ module.exports = {
     'node_modules'
   ],
   moduleNameMapper: {
-    '^lib/(.*)$': path.resolve(__dirname, 'lib/$1'),
     "^brandIcons/(.*)$": path.resolve(__dirname, 'lib/sprinter/brand-icons/$1'),
+    '^components/(.*)$': path.resolve(__dirname, 'src/app/components/$1'),
+    '^pages': path.resolve(__dirname, 'src/app/pages/index'),
     'app/(.*)': path.resolve(__dirname, 'src/app/$1'),
-    '^pages/(.*)$': path.resolve(__dirname, 'src/app/pages/$1'),
-    '^components/(.*)$': path.resolve(__dirname, 'src/components/$1'),
+    '^lib/(.*)$': path.resolve(__dirname, 'lib/$1'),
+    'src/(.*)': path.resolve(__dirname, 'src/$1')
   }
 }

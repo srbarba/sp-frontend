@@ -9,8 +9,9 @@
         "paths": {
             "lib/*": ["./lib/*"],
             "brandIcons/*": ["./lib/sprinter/brand-icons/*"],
+            "src/*": ["./src/*"],
             "app/*": ["./src/app/*"],
-            "pages/*": ["./src/app/pages/*"],
+            "pages": ["./src/app/pages/index"],
             "components/*": ["./src/app/components/*"]
         },
         "sourceMap": true,

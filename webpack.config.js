@@ -42,21 +42,24 @@ module.exports = function (env, argv) {
     entry: './src/index.tsx',
     output: {
       path: __dirname + '/build',
-      filename: 'index.js'
+      filename: 'index.js',
+      publicPath: '/'
     },
     devServer: {
       inline: true,
       contentBase: './public',
-      port: 3000
+      port: 3000,
+      historyApiFallback: true
     },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       alias: {
-        lib: path.resolve(__dirname, 'lib/'),
         brandIcons: path.resolve(__dirname, 'lib/sprinter/brand-icons/'),
+        components: path.resolve(__dirname, 'src/app/components/'),
+        pages: path.resolve(__dirname, 'src/app/pages/index'),
         app: path.resolve(__dirname, 'src/app/'),
-        pages: path.resolve(__dirname, 'src/app/pages/'),
-        components: path.resolve(__dirname, 'src/app/components/')
+        src: path.resolve(__dirname, 'src/'),
+        lib: path.resolve(__dirname, 'lib/')
       }
     },
     module: {
