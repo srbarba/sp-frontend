@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, Redirect } from 'react-router-dom';
 import { Product, ProductComponent } from 'components/product';
-import productMock from 'src/simulate/product.json';
+import productMock from 'src/mock/product.json';
 
 interface ProductPageProps {
   id: string;
