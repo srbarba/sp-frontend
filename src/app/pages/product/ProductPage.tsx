@@ -9,7 +9,7 @@ interface ProductPageProps {
 
 export const ProductPage = withRouter(
   (props: RouteComponentProps<ProductPageProps>) => {
-    const {product, loading} = getProductById(props.match.params.id);
+    const { product, loading } = getProductById(props.match.params.id);
 
     return (
       <React.Fragment>

@@ -16,5 +16,5 @@ export const getProductById = (id: string) => {
     }
   );
 
-  return { product, loading};
+  return { product, loading };
 };
