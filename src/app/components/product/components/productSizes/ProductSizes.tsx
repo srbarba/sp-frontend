@@ -25,6 +25,7 @@ export const ProductSizes = (props: ProductSizesProps): JSX.Element => {
           <div className="product--size-value">{size.value}</div>
           <div className="product--size-qty">{size.qty || '-'}</div>
           <input
+            disabled={!size.qty}
             name="size"
             type="checkbox"
             checked={props.selected === size.value}
