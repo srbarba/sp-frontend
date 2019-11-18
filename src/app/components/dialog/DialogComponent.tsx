@@ -13,9 +13,6 @@ export const DialogComponent = ({
   show,
   handleClose
 }: DialogProps): JSX.Element => {
-  useEffect(() => {
-    console.log('render');
-  });
   return (
     <React.Fragment>
       <div
