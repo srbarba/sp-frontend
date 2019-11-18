@@ -20,13 +20,12 @@ export const ProductComponent = (product: Product) => {
   const handleSubmit = async () => {
     await addProductToQuote({
       article: product.article,
-      size: size,
-      qty: qty
+      size,
+      qty
     });
   };
 
   useEffect(() => {
-    console.log('response');
     if (response && response.status === 'success') {
       setDialog({
         title: 'Enhorabuena!',

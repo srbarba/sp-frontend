@@ -47,7 +47,7 @@ module.exports = function (env, argv) {
     output: {
       path: __dirname + '/build',
       filename: 'index.js',
-      publicPath: '/'
+      publicPath: './'
     },
     devServer: {
       inline: true,
