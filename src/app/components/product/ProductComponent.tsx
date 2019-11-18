@@ -19,9 +19,11 @@ export const ProductComponent = (product: Product) => {
 
   const handleSubmit = async () => {
     await addProductToQuote({
-      article: product.article,
-      size,
-      qty
+      data: {
+        article: product.article,
+        size,
+        qty
+      }
     });
   };
 
