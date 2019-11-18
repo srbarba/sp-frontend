@@ -20,9 +20,8 @@ export const ProductSelectQty = (props: ProductSelectQtyProps): JSX.Element => {
       name="qty"
       id="qty"
       onChange={handleChange}>
-      // tslint:disable-next-line: variable-name
       {Array.from(Array(props.qty), (e, i) => (
-        <option key={i} value={(++i).toString()}>
+        <option {...e} key={i} value={(++i).toString()}>
           {i}
         </option>
       ))}
