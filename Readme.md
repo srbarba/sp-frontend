@@ -21,6 +21,9 @@ npm install
 Once installed the dependencies, you can run the project executing
 ```shell
 npm start
+
+## if you need to use another port you can use:
+npm start -- --port 5000
 ```
 
 ## Running the tests
