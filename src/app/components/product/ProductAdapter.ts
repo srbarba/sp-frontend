@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 
 export const getProductById = (id: string) => {
   const history = useHistory();
-  const [product, loading] = useFetch(
+  const [product, loading, getData] = useFetch(
     `/product/${id}`,
     {},
     (error: AxiosError) => {
@@ -16,5 +16,5 @@ export const getProductById = (id: string) => {
     }
   );
 
-  return { product, loading };
+  return { product, loading, getData };
 };

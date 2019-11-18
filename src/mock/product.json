@@ -2,7 +2,7 @@
   "article": "0176944",
   "name": "Nike Arrow",
   "title": "Deportivo Nike Arrow Caballero",
-  "img": "/img/nike.png",
+  "img": "/img/articles/0176944/01.png",
   "brand": "Adidas",
   "color": "Azul",
   "price": {
@@ -16,23 +16,23 @@
       "name": "Sprinter Altabix",
       "sizes": [
         {
-          "value": 40,
+          "value": "40",
           "qty": 2
         },
         {
-          "value": 41,
+          "value": "41",
           "qty": 3
         },
         {
-          "value": 42,
+          "value": "42",
           "qty": null
         },
         {
-          "value": 43,
+          "value": "43",
           "qty": 4
         },
         {
-          "value": 44,
+          "value": "44",
           "qty": 1
         }
       ]

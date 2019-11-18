@@ -13,7 +13,7 @@ describe('App', () => {
     });
     await finishLoading();
 
-    expect(container.textContent).toContain('Product: 0176944');
+    expect(container.textContent).toContain('Nike Arrow');
     expect(container).toBeDefined();
   });
 
@@ -23,7 +23,7 @@ describe('App', () => {
     });
     await finishLoading();
 
-    expect(container.textContent).toContain('Product: 0176944');
+    expect(container.textContent).toContain('Nike Arrow');
     expect(container).toBeDefined();
   });
 
@@ -37,7 +37,7 @@ describe('App', () => {
     );
     await finishLoading();
 
-    expect(container.textContent).toContain('Product: 0176944');
+    expect(container.textContent).toContain('Nike Arrow');
     expect(container).toBeDefined();
   });
 
@@ -47,7 +47,7 @@ describe('App', () => {
     });
     await finishLoading();
 
-    expect(container.textContent).toContain('Product: 0176944');
+    expect(container.textContent).toContain('Nike Arrow');
     expect(container).toBeDefined();
   });
 });

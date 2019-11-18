@@ -1,3 +1,4 @@
 import { useFetch } from './useFetch';
+import { useDialog } from './useDialog';
 
-export { useFetch };
+export { useFetch, useDialog };

@@ -1,5 +1,5 @@
 export interface ProductSizesAvaibility {
-  value: number;
+  value: string;
   qty: number;
 }
 
